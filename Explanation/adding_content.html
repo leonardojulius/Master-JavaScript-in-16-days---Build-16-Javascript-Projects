@@ -15,15 +15,41 @@
 <div class="hello_text">
     Hello
 </div>
+
+<button class="start_interval">
+    Start interval
+</button>
+
+<div class="seconds">
+
+</div>
 <script>
     var add_hello = document.querySelector('.add_hello')
     var text_hello = document.querySelector('.hello_text')
 
-    add_hello.addEventListener('click',function(){
+    add_hello.addEventListener('click', function(){
         text_hello.textContent = text_hello.textContent + " Hello"
         y(i+1) = y(i) + " Hello"
 
     })
+
+    var s=0;
+    var counter;
+    var start_interval = document.querySelector('.start_interval');
+    var seconds = document.querySelector('.seconds');
+    
+    start_interval.addEventListener('click', function(){
+
+        if(!counter) {
+            counter = setInterval(run_seconds, 1000);   
+        }
+        counter = setInterval();        
+        function run_seconds() {
+           seconds.textContent = s + 1;
+           s++
+        }
+    })
+
 </script>
 </body>
 </html>
