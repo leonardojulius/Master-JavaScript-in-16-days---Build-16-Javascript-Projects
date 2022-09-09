@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: rgb(26, 26, 114);
+            color: white;
+        }
+        button {
+            font-size: 10px;
+            border-color: transparent;
+            display: block;
+            padding: 5px 40px;
+        }
+        input {
+        font-size: 50px;
+        border-color: transparent;
+        text-align: center;
+        margin-bottom: 50px;
+        }
+        form {
+            height: 98vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <form>
+        <input type="text" id ="input" placeholder="Enter A task">
+        <button type="submit" class="submit">Submit</button>
+        <ul class ="list">
+       
+        </ul>
+    </form>
+
+
+    <script>
+        const form = document.querySelector("form")
+        const input = document.querySelector("input")
+        const list = document.querySelector("ul")
+
+
+        form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        toDo();
+
+        input.value = ""
+        })
+
+        function toDo() {
+
+            if(input.value === '') {
+                alert('The value is empty')
+            }else if (input.value === 'yes') {
+                alert('The value y')
+            } 
+            else {
+        const value = input.value;
+
+        /*
+        const newList = document.createElement("li")
+            }
+*/
+        }
+    </script>
+</body>
+</html>
