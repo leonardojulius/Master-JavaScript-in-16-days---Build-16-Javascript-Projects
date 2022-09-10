@@ -78,13 +78,16 @@
         /* Adding the li inside the ul */
         list.append(newList);
 
-
-
-
+        newList.append(' ',deleteBtn )
             }
-       
-        
         }
+
+        list.addEventListener('click', function(e){
+            if(e.target.nodeName =='BUTTON') {
+          e.target.closest('LI').remove();
+            }
+        })
+
     </script>
 </body>
 </html>
