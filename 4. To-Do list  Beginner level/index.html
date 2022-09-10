@@ -67,11 +67,23 @@
             } 
             else {
         const value = input.value;
-
-        /*
+        /* Creating li element each time we submit */
         const newList = document.createElement("li")
+        /* Adding the value of the input ti the li */
+        newList.textContent = value;
+        /* Adding the delete button */
+        const deleteBtn = document.createElement("button")
+        /* Changing the content of the button */
+        deleteBtn.textContent = "Delete";
+        /* Adding the li inside the ul */
+        list.append(newList);
+
+
+
+
             }
-*/
+       
+        
         }
     </script>
 </body>
