@@ -21,7 +21,7 @@
         button {
             background-color: transparent;
             border-radius: 5px;
-            border-color: black;
+            border-color: white;
             font-size: 30px;
             color: white;
         }
@@ -34,15 +34,27 @@
         <h2>
             The recent background-color is:<span class="color">Red</span>
             <button class="change">Change the background-color</button>
-            <div class="test"></div>
+        
         </h2>
       
         
     </div>
 
     <script>
-        const colors = ["green", "red", "blue", "green","orange"]
-        document.querySelector('.text').textContent = colors[1]
+        const colors = ["green", "red", "blue", "green","orange"];
+        var color  = document.querySelector('.color')
+        var button = document.querySelector('.change')
+      
+
+        button.addEventListener('click', function() {
+            var final_color = colors [randomColor]
+        document.body.style.backgroundColor =colors[randomColor()];
+        color.textContent = final_color
+
+        function randomColor() {
+            return Math.floor(Math.random() * colors.length);
+        }
+        })
     </script>
 </body>
 </html>
