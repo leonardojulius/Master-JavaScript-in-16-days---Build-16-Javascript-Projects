@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: red;
+        }
+        h2 {
+
+            font-size: 40px;
+            background-color: black;
+            padding:  10px 20px;
+            color: white;
+        }
+        button {
+            background-color: transparent;
+            border-radius: 5px;
+            border-color: black;
+            font-size: 30px;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h2>
+            The recent background-color is:<span class="color">Red</span>
+            <button class="change">Change the background-color</button>
+            <div class="test"></div>
+        </h2>
+      
+        
+    </div>
+
+    <script>
+        const colors = ["green", "red", "blue", "green","orange"]
+        document.querySelector('.text').textContent = colors[1]
+    </script>
+</body>
+</html>
