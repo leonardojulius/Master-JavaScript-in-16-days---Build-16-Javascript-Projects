@@ -32,8 +32,8 @@ body{
         is <span class="final_result"></span>
    </div> 
    <script>
-    var first_number = 1;
-    var second_number = 5;
+    var first_number = 13;
+    var second_number = 3546435;
     document.querySelector('.first_number').textContent = first_number
     document.querySelector('.second_number').textContent = second_number
 
@@ -42,11 +42,20 @@ body{
 
     /* For loop */
 
+    /*
     for(i=0; i<(second_number - first_number); i++){
         total_numbers++
         document.querySelector('.final_result').textContent = total_numbers
     }
+    */
 
+    /* While loop */
+
+    while(i<(second_number - first_number)) {
+        total_numbers++
+        i++
+        document.querySelector('.final_result').textContent = total_numbers
+    }
    </script>
 </body>
 </html>
