@@ -1,0 +1,46 @@
+body {
+    background-color: darkblue;
+
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+nav {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    align-items: center;
+}
+.links li {
+    margin-bottom: 10px;
+}
+.links a{
+    text-transform: uppercase;
+border-bottom: 1px solid black;
+text-decoration: none;
+font-size: 20px;
+color: black;
+}
+.nav_toggle {
+    font-size: 30px;
+background-color: transparent;
+border-color: transparent;
+position: absolute;
+top: 10px;
+right: 10px;
+
+}
+.links {
+    list-style: none;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.1s;
+}
+.active_nav {
+    height: 9rem;
+}
