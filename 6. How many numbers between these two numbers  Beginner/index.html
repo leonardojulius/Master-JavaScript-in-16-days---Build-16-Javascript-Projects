@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body{
+    background-color: darkblue;
+    color: white;
+    height: 98vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="First Number">
+        The first Number is : <span class="first_number"></span>
+    </div>
+
+    <div class="second">
+        The Second Number is : <span class="second_number"></span>
+    </div>
+   <div class="result">
+        The difference between <span class="first_number"></span> And <span class="second_number"></span> 
+        is <span class="final_result"></span>
+   </div> 
+   <script>
+    var first_number = 1;
+    var second_number = 5;
+    document.querySelector('.first_number').textContent = first_number
+    document.querySelector('.second_number').textContent = second_number
+
+    var i=0; 
+    var total_numbers = 0;
+
+    /* For loop */
+
+    for(i=0; i<(second_number - first_number); i++){
+        total_numbers++
+        document.querySelector('.final_result').textContent = total_numbers
+    }
+
+   </script>
+</body>
+</html>
