@@ -7,32 +7,47 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+
 </head>
 <body>
     <nav>
         <div class="nav_header">
-        <img src="2560px-Adidas_Logo.svg.png" alt="">
-        <button class="nav_toggle">
+            <img src="2560px-Adidas_Logo.svg.png" height="40px" alt="">
+            <button class="nav_toggle">
 <i class="fas fa-bars"></i>
-        </button>
-        <ul class="links">
-            <li>
-                <a href="#">home</a>
-            </li>
-            <li>
-                <a href="#">about</a>
-            </li>
-            <li>
-                <a href="#">contact</a>
-            </li>
-            <li>
-                <a href="#">hire us</a>
-            </li>
-
-        </ul>
-
-    </div>
+            </button>
+            <ul class="links">
+                <li>
+                    <a href="#">home</a>
+                </li>
+                <li>
+                    <a href="#">about</a>
+                </li>
+                <li>
+                    <a href="#">contact us</a>
+                </li>
+                <li>
+                    <a href="#">hire us</a>
+                </li>
+            </ul>
+        </div>
     </nav>
-    
+
+
+
+
+
+
+<script>
+const button = document.querySelector('.nav_toggle');
+const list = document.querySelector('.links')
+button.addEventListener('click', function() {
+    /*
+    console.log(list.classList)
+    console.log(list.classList.contains("random"))
+    console.log(list.classList.contains("links")) */
+    list.classList.toggle('active_nav')
+})
+</script>
 </body>
 </html>
