@@ -14,9 +14,9 @@
         <div class="nav_header">
             <img src="2560px-Adidas_Logo.svg.png" height="40px" alt="">
             <button class="nav_toggle">
-<i class="fas fa-bars"></i>
-            </button>
-            <ul class="links">
+            <i class="fas fa-bars"></i>
+             </button>
+             <ul class="links u1">
                 <li>
                     <a href="#">home</a>
                 </li>
@@ -29,25 +29,25 @@
                 <li>
                     <a href="#">hire us</a>
                 </li>
-            </ul>
+                
+                
+             </ul>
         </div>
     </nav>
 
-
-
-
-
-
-<script>
-const button = document.querySelector('.nav_toggle');
-const list = document.querySelector('.links')
-button.addEventListener('click', function() {
-    /*
-    console.log(list.classList)
-    console.log(list.classList.contains("random"))
-    console.log(list.classList.contains("links")) */
-    list.classList.toggle('active_nav')
-})
-</script>
+    <script>
+        const button = document.querySelector('.nav_toggle');
+        const list = document.querySelector('.links')
+        button.addEventListener('click',function() {
+      
+        if (list.classList.contains('active_nav')) {
+            list.classList.remove('active_nav')
+        } else {
+            list.classList.add('active_nav')
+        }           
+           
+        })
+    </script>
+    
 </body>
 </html>
