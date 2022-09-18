@@ -5,7 +5,7 @@ var = can be access globally
 
 */
 const form = document.querySelector('.form')
-const name = document.getElementById('name')
+const name1 = document.getElementById('name')
 const email = document.getElementById('email')
 const password = document.getElementById('password')
 
@@ -45,13 +45,37 @@ return re.test(String(email).toLowerCase())
 }
 /* Trimming all the white spaces */
 const validatedInputs = ()=> {
-    const nameValue = name.value.trim();
+    const nameValue = name1.value.trim();
     const emailValue = email.value.trim();
     const passwordValue = password.value.trim();
 
+    /* Giving messages for the user name */
+
+    if(nameValue === '' ) {
+        setError(name1, 'Name is required')
+    }else {
+        setSucess(name1)
+    }
     
     
-}
-function validatedInputs() {
+    if(emailValue === '' ) {
+        setError(email, 'email is required')
+    } else if (!validEmail(emailValue)) {
+        setError(email, 'Email format is required eg:"johndoe@mail.com"')
+    }
+    
+    else {
+        setSucess(email)
+    }
+
+    if(passwordValue === '' ) {
+        setError(password, 'password is required')
+    }else if (passwordValue.length <10) {
+        setError(password, 'password must be greater or equal 10 ch. ')
+    }
+    
+    else {
+        setSucess(password)
+    }
 
 }
