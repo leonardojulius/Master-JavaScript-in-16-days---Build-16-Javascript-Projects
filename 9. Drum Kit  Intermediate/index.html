@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="keys">
+        <div data-key="65" class="key">
+            <kbd>A</kbd>
+        </div>
+        <div data-key="83" class="key">
+            <kbd>S</kbd>
+        </div>
+
+        <div data-key="68" class="key">
+            <kbd>D</kbd>
+        </div>
+
+        <div data-key="70" class="key">
+            <kbd>F</kbd>
+        </div>
+        <div data-key="71" class="key">
+            <kbd>G</kbd>
+        </div>
+        <div data-key="72" class="key">
+            <kbd>H</kbd>
+        </div>
+        <div data-key="74" class="key">
+            <kbd>J</kbd>
+        </div>
+    </div>
+    <audio data-key="65" src="crash.mp3"></audio>
+    <audio data-key="83" src="kick-bass.mp3"></audio>
+    <audio data-key="68" src="tom-1.mp3"></audio>
+    <audio data-key="70" src="tom-2.mp3"></audio>
+    <audio data-key="71" src="tom-3.mp3"></audio>
+    <audio data-key="72" src="tom-4.mp3"></audio>
+    <audio data-key="74" src="snare.mp3"></audio>
+<script>
+    window.addEventListener('keydown',e => {
+        console.log(e.keyCode)
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+        const key = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+        console.log(audio)
+        console.log(key)
+        audio.play()
+    })  
+</script>
+</body>
+</html>

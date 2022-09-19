@@ -1,0 +1,26 @@
+body {
+    background-color: darkblue;
+
+}
+.keys {
+    height: 100vh;
+    display: flex;
+    font-size: 40px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.key {
+    margin: 20px;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    text-shadow: 0 0 10px white;
+border: 5px solid white;
+transition: all .05s;
+}
+.key_run {
+    transform: scale(1.2);
+    border-color: yellow;
+    box-shadow: 5px 10px 10px red;
+}
