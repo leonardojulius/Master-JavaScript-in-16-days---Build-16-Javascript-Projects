@@ -25,6 +25,41 @@
         const message = document.querySelector(".message");
         const show = document.querySelector(".show");
 
+        let WeakPassword = /[a-z]/;
+        let MediumPassword = /\d+/;
+        let StrongPassword = /.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/;
+
+function run() {
+    if(input.value !== ''){
+        message.textContent = "Your Password is weak";
+        show.style.display = "block"
+    }
+
+     if(input.value.length <= 3 && (input.value.match(WeakPassword) 
+     || input.value.match(MediumPassword) 
+     || input.value.match(StrongPassword))) {
+
+            message.textContent = "Your password is too weak"
+     }
+     else if (input.value.length > 3 && input.value.match(WeakPassword) && input.value.match(MediumPassword)) {
+        message.textContent = "Your password is medium"
+     } 
+
+     if (input.value.length > 3 && input.value.match(WeakPassword) && input.value.match(MediumPassword) && input.value.match(StrongPassword)) {
+        message.textContent = "Your password is strong"
+     }  
+
+     else {
+
+        show.style.display = "none"
+        message.textContent = ''
+
+     }
+
+
+}
+
+
     </script>
     
 </body>
