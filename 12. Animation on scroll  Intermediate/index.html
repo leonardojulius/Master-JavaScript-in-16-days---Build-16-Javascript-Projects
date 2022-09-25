@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="title">
+        <h1>
+            Animation on scroll
+        </h1>
+    </div>
+
+    <!--Animation Container-->
+
+    <div class="container">
+        <div class="row">
+
+    <div class="col-6">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis distinctio explicabo molestiae, veniam quaerat officiis delectus voluptas molestias rem fugiat. Amet consequuntur quis repellendus repudiandae! Ut, dignissimos asperiores? Atque, eligendi.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. In est aliquid aperiam ipsam beatae eius illo atque esse repellat blanditiis saepe ex mollitia consectetur neque magni natus facere, delectus cumque?
+    </div> 
+    
+    <div class="col-6">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis distinctio explicabo molestiae, veniam quaerat officiis delectus voluptas molestias rem fugiat. Amet consequuntur quis repellendus repudiandae! Ut, dignissimos asperiores? Atque, eligendi.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. In est aliquid aperiam ipsam beatae eius illo atque esse repellat blanditiis saepe ex mollitia consectetur neque magni natus facere, delectus cumque?
+        </div> 
+        </div>
+    </div>
+
+    <script>
+    window.addEventListener('scroll',  () => {
+        let row = document.querySelector('.row')
+        let rowPosition = row.getBoundingClientRect().top;
+        let windowPosition = window.innerHeight;
+        console.log("1st for window "+ windowPosition)
+        console.log("1st for rowposition " + rowPosition)
+        if(rowPosition < windowPosition) {
+            row.classList.add('active')
+            console.log("2nd for window " + windowPosition)
+        console.log("2nd for rowposition " + rowPosition)
+        }
+        else {
+            row.classList.remove('active')
+            console.log("3rd for window "+ windowPosition)
+        console.log("3rd for rowposition "+ rowPosition)
+        }
+
+    })
+
+    </script>
+</body>
+</html>
