@@ -1,0 +1,156 @@
+
+body {
+
+    height: 100vh;
+    color: black;
+    background-color: darkblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* LAYOUT */
+  .container {
+    position: relative;
+    width: 80vw;
+    height: 90vh;
+    background-color: white;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    overflow: hidden;
+    display: flex;
+  }
+
+  .player {
+    flex: 50%;
+    padding: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.75s;
+  }
+
+  /* ELEMENTS */
+  .name {
+    position: relative;
+    font-size: 4rem;
+    text-transform: uppercase;
+
+    margin-bottom: 0rem;
+  }
+
+  .score {
+    font-size: 4rem;
+    font-weight: 300;
+    color: #c7365f;
+    margin-bottom: auto;
+  }
+
+  .player--winner {
+    background-color: rgba(0, 0, 0, 0.226);
+  }
+  .current {
+    background-color: darkorchid;
+    opacity: 0.8;
+    border-radius: 9px;
+    color: #fff;
+    width: 200px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.75s;
+  }
+
+  .current-label {
+    text-transform: uppercase;
+
+    font-size: 1.7rem;
+    color: #ddd;
+  }
+
+  .current-score {
+    font-size: 3.5rem;
+  }
+
+  .btn {
+    position: absolute;
+    left: 50%;
+
+    transform: translateX(-50%) ;
+    color: #444;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 400;
+    transition: all 0.2s;
+
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+
+    padding: 0.7rem 2.5rem;
+    border-radius: 50rem;
+    box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
+  }
+
+
+
+  .btn_new {
+    top: 4rem;
+  }
+  .btn_roll {
+    top: 28.3rem;
+  }
+  .btn_hold {
+    top: 35.1rem;
+  }
+
+  .btn:active {
+    transform: translate(-50%, 3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  }
+
+  .btn:focus {
+    outline: none;
+  }
+
+  .dice {
+    position: absolute;
+    left: 50%;
+    top: 16.5rem;
+    transform: translateX(-50%);
+    height: 10rem;
+    box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+  }
+
+  .player_winner {
+    background-color: black;
+  }
+
+  .player_winner .name {
+    font-weight: 700;
+    color: darkorchid;
+  }
+
+  .hidden {
+    display: none;
+  }
+  .player_active {
+    background-color: rgba(0, 0, 0, 0.363);
+  }
+@media only screen and (max-width: 700px) {
+  .container {
+    position: relative;
+    width: 80vw;
+    height: auto;
+    background-color: white;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    height: 3000px;
+    overflow: hidden;
+    display: flex;
+
+  }
+}
