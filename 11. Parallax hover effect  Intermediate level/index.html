@@ -31,9 +31,22 @@
                     <img src="images/static-assets-upload9081804966336356629.jpeg" class="background" alt="">
                     <img src="images/person3.png" class="person" alt ="">
                 </div>
-
             </div>
         </div>
+
+        <script>
+            const container = document.querySelector('.container');
+            const person = document.querySelectorAll('.person');
+
+            document.body.addEventListener('mouseover',(e) => {
+                var x = ((window.innerWidth / 3) - e.pageX)/ 30
+                var y = ((window.innerHeight / 3) - e.pageY)/ 30
+                container.style.transform = `rotateX(${-y*2}deg) rotateY(${-x*2}deg) translateY(${x*2}px) translateX(${y*2}px)`
+                person.forEach(person, person => {
+                    person.style.transform = `translateY(${x*2}px) translateX(${y*2}px)`
+                })
+            })
+        </script>
     </body>
     </html>
 </body>
