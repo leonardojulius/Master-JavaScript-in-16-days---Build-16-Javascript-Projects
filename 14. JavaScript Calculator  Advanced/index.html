@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="grid">
+        <div class="output">
+            <div data-previous class="previous"></div>
+            <div data-current class="current"></div>
+        </div>
+
+<button data-clear class ="two_span">AC</button>
+<button data-delete>DEL</button>
+<button data-operation>/</button>
+<button data-number>1</button>
+<button data-number>2</button>
+<button data-number>3</button>
+<button data-operation>*</button>
+<button data-number>4</button>
+<button data-number>5</button>
+<button data-number>6</button>
+<button data-operation>+</button>
+<button data-number>7</button>
+<button data-number>8</button>
+<button data-number>9</button>
+<button data-operation>-</button>
+<button data-number>.</button>
+<button data-number>0</button>
+<button data-equal class="two_span equal">=</button>
+</div>
+
+<script>
+var current_operand, previous_operand;
+var current_operation;
+
+const button_number = document.querySelectorAll('[data-number]')
+const button_operation = document.querySelectorAll('[data-operation]')
+const button_delete = document.querySelector('[data-delete]')
+const button_equal = document.querySelector('[data-equal]')
+const clear = document.querySelector('[data-clear]')
+var previous_operand_text = document.querySelector('.previous')
+var current_operand_text = document.querySelector('.current')
+
+// Adding Number when clicking on a button
+
+function add_number(button_number_par) {
+    button_number.forEach(button_number_par => {
+        button_number_par.addEventListener('click', () => {
+            if(button_number_par.textContent === '.' && current_operand_text.textContent.includes('.')) return
+            current_operand_text.textContent += button_number_par.innerHTML;
+current_operand = current_operand_text.textContent;            
+        })
+
+
+    })
+}
+
+add_number();
+
+// OPERATION BUTTONS
+
+button_operation.forEach(operation_button_par => {
+    operation_button_par.addEventListener('click', () =>{
+        if(previous_operand_text.textContent.includes('/') || previous_operand_text.textContent.includes('*') ||
+        previous_operand_text.textContent.includes('+') || previous_operand_text.includes('-')) {
+           let result;
+            
+
+
+
+
+        }
+
+    })
+
+
+})
+
+</script>
+
+</body>
+</html>
