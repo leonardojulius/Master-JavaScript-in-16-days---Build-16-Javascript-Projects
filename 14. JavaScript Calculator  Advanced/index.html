@@ -32,6 +32,7 @@
 <button data-number>.</button>
 <button data-number>0</button>
 <button data-equal class="two_span equal">=</button>
+
 </div>
 
 <script>
@@ -65,20 +66,93 @@ add_number();
 // OPERATION BUTTONS
 
 button_operation.forEach(operation_button_par => {
-    operation_button_par.addEventListener('click', () =>{
-        if(previous_operand_text.textContent.includes('/') || previous_operand_text.textContent.includes('*') ||
-        previous_operand_text.textContent.includes('+') || previous_operand_text.includes('-')) {
-           let result;
-            
+    operation_button_par.addEventListener('click', () => {
+        if (previous_operand_text.textContent.includes('/') || previous_operand_text.textContent.includes('*') || previous_operand_text.textContent.includes('+') || previous_operand_text.includes('-')) {
+            let result;
+const prev = parseFloat(previous_operand);
+const current = parseFloat(current_operand)
+            switch(current_operation) {
+                case '+':
+                    result = current + prev
+                break
+                case '-':
+                    result = prev - current
+                break
+                case '*':
+                    result = current * prev
+                break
+                case '/':
+                    result = prev / current
+                break
+                default:
+                break
+            }
 
-
-
-
+            previous_operand_text.textContent = result + operation_button_par.innerHTML;
+            current_operand_text.textContent = ''
+            current_operand = ''
+            previous_operand = result;
+            current_operation = operation_button_par.textContent
         }
+        else {
 
-    })
+
+        previous_operand = current_operand;
+        current_operand = '';
+        previous_operand_text.textContent = previous_operand + operation_button_par.textContent;
+        current_operand_text.textContent = ''
+        current_operation = operation_button_par.textContent;
+    }
+    })})
 
 
+//EQUAL BUTTON
+button_equal.addEventListener('click', () => {
+if(previous_operand_text.textContent.includes('/') || previous_operand_text.textContent.includes('-')) {
+    let result;
+
+const prev = parseFloat(previous_operand);
+const current = parseFloat(current_operand)
+    switch(current_operation){
+        case '+': 
+            result = current + prev
+        break
+        case '-': 
+            result = prev - current
+        break 
+        case '*': 
+            result = current * prev    
+        break
+        case '/':
+            result = prev / current
+        break 
+        default:
+        break            
+    }
+    
+    current_operand_text.textContent = result;
+    current_operand = result;
+    previous_operand_text.textContent = ''
+} else {
+    return
+}
+
+
+})
+
+//BUTTON DELETE CH.
+
+button_delete.addEventListener('click', () => {
+    current_operand = current_operand.toString().slice(0, -1);
+    current_operand_text.textContent = current_operand
+    console.log("The current is " + current_operand)
+
+})
+
+//CLEAR BUTTON
+
+clear.addEventListener('click', ()=>{
+    current_operand = previous_operand = current_operation = current_operand_text.textContent = previous_operand_text.textContent = ''
 })
 
 </script>
