@@ -1,18 +1,18 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
 <body>
-    <div class="grid">
-        <div class="output">
-            <div data-previous class="previous"></div>
-            <div data-current class="current"></div>
-        </div>
+<div class="grid">
+    <div class="output">
+<div data-previous class="previous"></div> 
+<div data-current class="current"></div>       
+    </div>
 
 <button data-clear class ="two_span">AC</button>
 <button data-delete>DEL</button>
@@ -29,10 +29,8 @@
 <button data-number>8</button>
 <button data-number>9</button>
 <button data-operation>-</button>
-<button data-number>.</button>
 <button data-number>0</button>
 <button data-equal class="two_span equal">=</button>
-
 </div>
 
 <script>
@@ -47,27 +45,66 @@ const clear = document.querySelector('[data-clear]')
 var previous_operand_text = document.querySelector('.previous')
 var current_operand_text = document.querySelector('.current')
 
-// Adding Number when clicking on a button
+
+//Adding Number when click on a button
 
 function add_number(button_number_par) {
     button_number.forEach(button_number_par => {
         button_number_par.addEventListener('click', () => {
-            if(button_number_par.textContent === '.' && current_operand_text.textContent.includes('.')) return
+            if(button_number_par.textContent === '.' && current_operand_text.textContent('.')) return
             current_operand_text.textContent += button_number_par.innerHTML;
-current_operand = current_operand_text.textContent;            
+            current_operand = current_operand_text.textContent;
         })
-
-
     })
 }
 
 add_number();
 
-// OPERATION BUTTONS
+//OPERATION BUTTONS
 
 button_operation.forEach(operation_button_par => {
-    operation_button_par.addEventListener('click', () => {
-        if (previous_operand_text.textContent.includes('/') || previous_operand_text.textContent.includes('*') || previous_operand_text.textContent.includes('+') || previous_operand_text.includes('-')) {
+    operation_button_par.addEventListener('click',() => {
+        if(previous_operand_text.textContent.includes('/') || previous_operand_text.textContent.includes('*') || previous_operand_text.textContent.includes('+') || previous_operand_text.textContent.includes('-')) {
+            let result;
+     const prev = parseFloat(previous_operand);
+     const current = parseFloat(current_operand)
+                switch(current_operand){
+                    case '+':
+                       result = current + prev
+                    break
+                    case '-': 
+                        result = prev - current
+                    break
+                    case '*':
+                        result = current * prev 
+                    break
+                    case '/':
+                        result = prev / current
+                    break
+                    default:
+                    break                
+                }       
+            
+                previous_operand_text.textContent = result + operation_button_par.innerHTML;
+                current_operand_text.textContent = ''
+                current_operand = ''
+                previous_operand = result;
+                current_operation = operation_button_par.textContent
+            
+                } else {
+
+                    previous_operand = current_operand;
+                    current_operand = '';
+                    previous_operand_text.textContent = previous_operand + operation_button_par.textContent;
+                    current_operand_text.textContent = ''
+                    current_operation = operation_button_par.textContent;
+                } 
+                })})
+
+//EQUAL BUTTON
+
+button_equal.addEventListener('click', () =>  {
+    if (previous_operand_text.textContent.includes('/') || previous_operand_text.textContent.includes('*') || previous_operand_text.textContent.includes('+') || previous_operand_text.textContent.includes('-')) {
             let result;
 const prev = parseFloat(previous_operand);
 const current = parseFloat(current_operand)
@@ -88,74 +125,28 @@ const current = parseFloat(current_operand)
                 break
             }
 
-            previous_operand_text.textContent = result + operation_button_par.innerHTML;
-            current_operand_text.textContent = ''
-            current_operand = ''
-            previous_operand = result;
-            current_operation = operation_button_par.textContent
+          current_operand_text.textContent = result;
+          current_operand = result;
+          previous_operand_text.textContent = ''
+        } else {
+            return
         }
-        else {
-
-
-        previous_operand = current_operand;
-        current_operand = '';
-        previous_operand_text.textContent = previous_operand + operation_button_par.textContent;
-        current_operand_text.textContent = ''
-        current_operation = operation_button_par.textContent;
-    }
-    })})
-
-
-//EQUAL BUTTON
-button_equal.addEventListener('click', () => {
-if(previous_operand_text.textContent.includes('/') || previous_operand_text.textContent.includes('-')) {
-    let result;
-
-const prev = parseFloat(previous_operand);
-const current = parseFloat(current_operand)
-    switch(current_operation){
-        case '+': 
-            result = current + prev
-        break
-        case '-': 
-            result = prev - current
-        break 
-        case '*': 
-            result = current * prev    
-        break
-        case '/':
-            result = prev / current
-        break 
-        default:
-        break            
-    }
-    
-    current_operand_text.textContent = result;
-    current_operand = result;
-    previous_operand_text.textContent = ''
-} else {
-    return
-}
-
-
 })
 
 //BUTTON DELETE CH.
-
 button_delete.addEventListener('click', () => {
-    current_operand = current_operand.toString().slice(0, -1);
+    current_operand = current_operand.toString().slice(0,-1);
     current_operand_text.textContent = current_operand
     console.log("The current is " + current_operand)
-
 })
 
 //CLEAR BUTTON
-
-clear.addEventListener('click', ()=>{
+clear.addEventListener('click', () =>{
     current_operand = previous_operand = current_operation = current_operand_text.textContent = previous_operand_text.textContent = ''
 })
 
 </script>
 
 </body>
+
 </html>
