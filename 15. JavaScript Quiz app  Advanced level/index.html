@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body id="body">
+<div class="container">
+    <div id="question_container" class="hide">
+        <div id="question">Question</div>
+        <div id="answer_buttons">
+
+        </div>
+    </div>
+
+<div class="control_buttons">
+    <button id="start" class="start_btn btn">
+        Start
+    </button>
+    <button id="next" class="next_btn btn hide">
+        Next
+    </button>
+</div>
+</div>
+
+<script>
+// CONSTRANTS
+
+const start = document.querySelector('.start_btn');
+const question_container = document.getElementById('question_container');
+const question_printed = document.getElementById('question');
+const answers = document.getElementById('answer_buttons');
+const next = document.getElementById('next')
+const body = document.getElementById('body')
+let shuffled, current_number;
+
+
+// QUESTIONS' ARRAY
+
+const questions =[
+
+{
+    question:'What are you learning right now?',
+    answers:[
+        {text: 'JavaScript', correct: true},
+        {text: 'HTML5',correct: false},
+        {text: 'CSS3',correct: false}
+    ]
+},
+
+{
+    question:'Do you like winter',
+    answers:[
+        {text: 'YES', correct: true},
+        {text: 'NO', correct: true}
+
+    ]
+},
+
+{
+    question:'Do you like JS?',
+    answers:[
+        {text: 'indeed', correct:true},
+        {text: 'NO', correct:false},
+        {text: 'KINDA', correct: false},
+        {text: 'NOT REALLY', correct: false}
+      ]
+},
+{
+    question:'DO you like MAC',
+    answers: [
+        {text: 'yes', correct:true},
+        {text: 'no', correct:false}
+    ]
+
+
+},
+
+{
+    question:'Do you use Bootstrap 5',
+    answers: [
+        {text:'yes for bootstrap', correct:true},
+        {text:'no for bootstrap', correct: false}
+    ]
+}
+
+]
+
+// START THE QUIZ
+
+function start_quiz() {
+    start.addEventListener('click', () => {
+current_number = 0;
+question_container.classList.remove('hide');
+start.classList.add('hide');
+shuffled = questions.sort(() => Math.random() - .5) 
+NextQuestion();       
+    })
+console.log("quiz has been started")
+}
+start_quiz();
+
+// NEXT QUESTION
+
+function NextQuestion() {
+    reset_state();
+    Showquestion(shuffled[current_number]);
+}
+
+//SHOW QUESTION
+function Showquestion(question_par) {
+    question_printed.textContent = question_par.question;
+    question_par.answers.forEach(answer_part => {
+        const button = document.createElement('button')
+        button.innerHTML = answer_part.text
+        button.classList.add('btn')
+        if (answer_part.correct) {
+            button.dataset.correct = answer_part.correct
+        }
+        answers.appendChild(button)
+        button.addEventListener('click', select_answer)
+
+    });
+
+}
+
+// SELECT ANSWER
+
+function select_answer(e) {
+
+    const selected_answer = e.target;
+    const correct = selected_answer.dataset.correct;
+//GIVING BACKGROUND ACCORDING TO THE ANSWER
+Changebackground(document.body, correct)
+// END OF THE QUESTIONS
+
+if(shuffled.length -1 > current_number) {
+    next.classList.remove('hide')
+} else {
+question_printed.innerHTML = ''
+answers.innerHTML = ''
+start.innerHTML = 'Restart';
+start.classList.remove('hide')
+}
+}
+
+//CHANGE BACKGROUND
+
+function Changebackground(element, correct) {
+    clear(element)
+
+    if(correct){
+        element.classList.add('correct')
+    } else {
+        element.classList.add('wrong')
+    }
+}
+
+//CLEAR
+
+function clear(element) {
+    element.classList.remove('correct')
+    element.classList.remove('wrong')
+}
+
+// CLICKING ON NEXT
+
+next.addEventListener('click', () => {
+    current_number ++ 
+    reset_state();
+    Showquestion(shuffled[current_number])
+})
+
+// RESET STATE
+
+function reset_state() {
+    next.classList.add('hide');
+    answers.textContent = ''
+    question_printed.textContent = ''
+    body.classList.remove('correct')
+    body.classList.remove('wrong')
+}
+
+</script>
+
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,65 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: Gotham Rounded;
+}
+
+
+
+body {
+
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: darkblue;
+}
+
+.container {
+  width: 80%;
+  max-width: 100%;
+  background-color: rgba(255, 255, 255, 0.788);
+  border-radius: 5px;
+  padding: 10px;
+
+}
+
+
+.btn {
+  margin-top: 10px;
+
+  border: 1px solid white;
+  background-color: darkblue;
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: block;
+  width: 100%;
+  color: white;
+  outline: none;
+}
+.btn:last-child {
+  margin-bottom: 20px;
+}
+.btn:hover {
+  background-color: purple;
+}
+
+
+.start_btn, .next_btn {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+
+.hide {
+  display: none;
+}
+.correct {
+  background-color: green;
+}
+.wrong {
+  background-color: red;
+}
