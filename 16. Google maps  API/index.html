@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple Map</title>
+        <style>
+            #map {
+                height: 500px;
+                width: 500px;
+            }
+        </style>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    </head>
+
+<body>
+    <div id="map"></div>
+
+<script>
+function initMap() {
+    const myLatLng = {lat:35.6762, lng: 139.6503};
+    window.addEventListener('load', ()=> {
+        let longg;
+        let latt;
+
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(reference_position => {
+               longg = reference_position.coords.longitude
+               latt = reference_position.coords.latitude
+               add_marker({coordinates:{lat: latt, lng: longg}}) 
+            })
+        }
+
+    })
+
+    var options = {
+        zoom:3,
+        center:{lat: 35.6762, lng:139.6503}
+    }
+
+    let map;
+    map = new google.maps.Map(document.getElementById("map"),options)
+
+    //ADDING MARKER ON CLICK
+    google.maps.event.addListener(map, 'click', function(e) {
+    add_marker({coordinates:e.latLng})    
+    })
+
+    var locations = [
+        {coordinates:{lat:35.6762, lng:139.6503},
+        content:'Tokyo'
+        },
+        {coordinates:{lat: 45.8150, lng: 15.9819},
+        content: 'Zagreb'
+        },
+
+        {coordinates:{lat: 36.7783, lng:-119.4179}
+    
+    }
+    ]
+    for(var i=0; i<locations.length; i++) {
+        add_marker(locations[i])
+    }
+    function add_marker(prop) {
+        var marker = new google.maps.Marker({
+            position: prop.coordinates,
+            map: map,
+        })
+
+    if(prop.content) {
+        var info_window = new google.maps.InfoWindow({
+            content: prop.content
+        })
+        marker.addEventListener('click', function() {
+            info_window.open(map, marker)
+        })
+    }else {
+        marker.addListener('click', function () {
+            alert("This location doesn't have content")
+        })
+    }    
+    }
+
+        }
+   
+</script>
+
+<script
+
+src="https://maps.googleapis.com/maps/api/js?key=api_key&callback=initMap&v=weekly"
+async
+></script>
+
+</body>
+
+
+</html>
