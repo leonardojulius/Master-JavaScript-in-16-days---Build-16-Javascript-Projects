@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="weather_container">
+        <div class="search_container">
+            <input type="text" class="search">
+            <button>Search</button>
+        </div>
+<div class="weather">
+<h1 class="city">
+    Weather in ...
+</h1>
+
+<p class="temp"></p>
+<img src="" class="icon" alt="">
+<p class="description">
+    ..
+</p>
+
+<p class="humidity">
+    ..
+</p>
+<p class="wind">
+...
+</p>
+
+</div>
+</div>
+
+<script>
+
+const apiKey ="api_key";
+const cities = document.querySelector('.city');
+const temperature = document.querySelector('.temp');
+const ic = document.querySelector('.icon');
+const desc = document.querySelector('.description');
+const hum = document.querySelector('.humidity')
+const win = document.querySelector('.wind')
+
+let weather_result = {
+
+fetch_weather: function(city) {
+    fetch("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey) 
+    .then((response) =>response.json())
+    .then((info)=> this.display_weather(info))
+},
+
+display_weather:function(info) {
+    const {name} = info;
+    const {icon, description } = info.weather[0];
+    const {speed}=info.wind;
+    const {temp, humidity} = info.main;
+    cities.textContent = "Weather in " + name;
+    ic.src = "https://openweathermap.org/img/wn/" + icon + ".png";
+    temperature.textContent = "Temperature is: " + temp + " F"
+    desc.textContent = "Description: " + description;
+    hum.textContent = "Humidity: " + humidity + "%";
+    win.textContent = "Wind speed: " + speed + "Km/h"
+},
+search: function() {
+    this.fetch_weather(document.querySelector('.search').value)
+}
+}
+document.querySelector('button').addEventListener('click', function() {
+    weather_result.search()
+})
+
+</script>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
